@@ -11,6 +11,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
+import org.junit.Test;
+
 public class Library
 {
 	private Connection con;
@@ -22,7 +24,7 @@ public class Library
 		app.init();	
 
 		// List all users
-		System.out.println("\nExecuting list all students.");
+		System.out.println("\nExecuting list all users.");
 		System.out.println(app.listAllUsers());
 
 		// List all users
@@ -56,7 +58,7 @@ public class Library
 
 	public void init()
 	{
-	    String fileName = "libSys.ddl";
+	    String fileName = "C:\\Users\\ardik\\OneDrive\\Documents\\GitClones\\LibrarySystem2.0\\SQL\\libsysjar\\ddl\\libSys.sql";
 	    Scanner scanner = null;
 	    
 	    try
@@ -213,5 +215,4 @@ public class Library
 
 		return stmt.executeQuery();
 	}
-
 }
