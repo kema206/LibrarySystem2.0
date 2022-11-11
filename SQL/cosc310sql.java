@@ -3,24 +3,24 @@ import java.sql.*;
 public class cosc310sql
 {
     public static void main(String[] args)
-	{	String url = "jdbc:mysql://localhost:3307/workson";
+	{	String url = "jdbc:mysql://localhost:3308/";
 		String uid = "root";
-		String pw = "304rootpw";
+		String pw = "310rootpw";
 
 		try 
 		(Connection con=DriverManager.getConnection(url, uid, pw);
 		Statement stmt = con.createStatement(); )
 		{
-			// String sql = "SELECT * FROM users";
-			// ResultSet rst = stmt.executeQuery(sql);
+			String sql = "SELECT * FROM users";
+			ResultSet rst = stmt.executeQuery(sql);
 
-			// StringBuilder output = new StringBuilder(); //for printing
-			// output.append("uid, uname, pwd, lvl, book1, book2");
+			StringBuilder output = new StringBuilder(); //for printing
+			output.append("uid, uname, pwd, lvl, book1, book2");
 
-			// while (rst.next())
-			// {
-			// 	output.append("\n"+rst.getInt("uid")+", "+rst.getString("uname"));
-			// }
+			while (rst.next())
+			{
+				output.append("\n"+rst.getInt("uid")+", "+rst.getString("uname"));
+			}
 			System.out.println("connected");
 		}
 		catch (SQLException ex)
