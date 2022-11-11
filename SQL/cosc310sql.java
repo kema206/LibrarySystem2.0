@@ -130,7 +130,7 @@ public class cosc310sql
 		stmt.setDate(7, null);
 		stmt.setDate(8, null);
 
-       	int a = stmt.executeUpdate();
+       	stmt.executeUpdate();
 		return stmt;
     }
 
@@ -145,8 +145,34 @@ public class cosc310sql
 		stmt.setString(5, genre);
 		stmt.setInt(6, qty);
 		stmt.setBoolean(7, borrowed);
-		stmt.setInt(8, originalAmt);      
-       	int a = stmt.executeUpdate();	
+		stmt.setInt(8, originalAmt);  
+
+       	stmt.executeUpdate();	
 		return stmt;
-    }	
+    }
+	
+	public PreparedStatement removeUser(int uid) throws SQLException
+	{
+    	// TODO: Use a PreparedStatement and return it at the end of the method
+        PreparedStatement stmt = con.prepareStatement("DELETE FROM user WHERE uid = ?");
+        stmt.setInt(1, uid);
+
+        stmt.executeUpdate();
+    	return stmt;
+	}
+
+	public PreparedStatement updateBook(int isbn, int qty, Boolean borrowed) throws SQLException
+    {                
+        String SQL = "UPDATE book SET qty = ? , borrowed = ? WHERE isbn = ?";
+        PreparedStatement stmt = con.prepareStatement(SQL); 
+		stmt.setInt(3, isbn);
+		stmt.setInt(1,qty);
+		stmt.setBoolean(2, borrowed);
+		
+       	stmt.executeUpdate();	
+		return stmt;
+    }
+
+
+
 }
