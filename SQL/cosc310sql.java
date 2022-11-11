@@ -3,7 +3,7 @@ import java.sql.*;
 public class cosc310sql
 {
     public static void main(String[] args)
-	{	String url = "jdbc:mysql://localhost:3308/";
+	{	String url = "jdbc:mysql://localhost:3308/librarySystem";
 		String uid = "root";
 		String pw = "310rootpw";
 
