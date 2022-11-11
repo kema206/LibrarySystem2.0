@@ -153,9 +153,17 @@ public class cosc310sql
 	
 	public PreparedStatement removeUser(int uid) throws SQLException
 	{
-    	// TODO: Use a PreparedStatement and return it at the end of the method
         PreparedStatement stmt = con.prepareStatement("DELETE FROM user WHERE uid = ?");
         stmt.setInt(1, uid);
+
+        stmt.executeUpdate();
+    	return stmt;
+	}
+
+	public PreparedStatement removeBook(int isbn) throws SQLException
+	{
+        PreparedStatement stmt = con.prepareStatement("DELETE FROM books WHERE isbn = ?");
+        stmt.setInt(1, isbn);
 
         stmt.executeUpdate();
     	return stmt;
@@ -173,6 +181,21 @@ public class cosc310sql
 		return stmt;
     }
 
+	public PreparedStatement addBorrowed(int uid, String book, Date date) throws SQLException
+    {  
+        String SQL = "UPDATE users "+
+					 "SET book1 = IFNULL(book1,?), book2 = IFNULL(book2,?), "+
+						 "date1 = IFNULL(date1, ?), date2 = IFNULL(date2,?)"+
+					 "WHERE uid = ?";
+        PreparedStatement stmt = con.prepareStatement(SQL); 
+		stmt.setString(1, book);
+		stmt.setString(2, book);
+		stmt.setDate(3, date);
+		stmt.setDate(4, date);
+
+       	stmt.executeUpdate();	
+		return stmt;
+    }
 
 
 }
