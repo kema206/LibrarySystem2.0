@@ -3,6 +3,7 @@ package com.example.librarysystem;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,10 +37,16 @@ Button search;
 
     }
     public void onLoginCilcked(View view){
+        Intent intent = new Intent(this,loginpage.class);
+        startActivity(intent);
 
 
     }
     public void onSearchClicked(View view){
+        String value = space.getText().toString();
+        Intent intent = new Intent(this, com.example.librarysystem.search.class);
+        intent.putExtra("search",value);
+        startActivity(intent);
 
     }
 }
