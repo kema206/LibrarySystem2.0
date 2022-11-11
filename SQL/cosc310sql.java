@@ -134,7 +134,7 @@ public class cosc310sql
 		return stmt;
     }
 
-	public PreparedStatement addBook(int isbn, String bookName, String author, int yearPub, String genre, int qty, Boolean borrowed, int originalAmt) throws SQLException
+	public PreparedStatement addBook(int isbn, String bookName, String author, int yearPub, String genre, int qty, int originalAmt) throws SQLException
     {                
         String SQL = "INSERT INTO books VALUES (?,?,?,?,?,?,?,?)";
         PreparedStatement stmt = con.prepareStatement(SQL); 
@@ -144,7 +144,7 @@ public class cosc310sql
 		stmt.setInt(4, yearPub);
 		stmt.setString(5, genre);
 		stmt.setInt(6, qty);
-		stmt.setBoolean(7, borrowed);
+		stmt.setString(7, "T");
 		stmt.setInt(8, originalAmt);  
 
        	stmt.executeUpdate();	
@@ -161,14 +161,14 @@ public class cosc310sql
     	return stmt;
 	}
 
-	public PreparedStatement updateBook(int isbn, int qty, Boolean borrowed) throws SQLException
+	public PreparedStatement updateBook(int isbn, int qty, String borrowed) throws SQLException
     {                
         String SQL = "UPDATE book SET qty = ? , borrowed = ? WHERE isbn = ?";
         PreparedStatement stmt = con.prepareStatement(SQL); 
 		stmt.setInt(3, isbn);
 		stmt.setInt(1,qty);
-		stmt.setBoolean(2, borrowed);
-		
+		stmt.setString(2, borrowed);
+
        	stmt.executeUpdate();	
 		return stmt;
     }
