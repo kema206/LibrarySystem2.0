@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="39dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="102dp"
+        android:onClick="onLoginCilcked"
+        android:text="Login"
+        app:layout_constraintBottom_toTopOf="@+id/textView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="159dp"
+        android:layout_height="0dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/search"
+        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toStartOf="@+id/search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/search" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="386dp"
+        android:onClick="onSearchClicked"
+        android:text="Search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
