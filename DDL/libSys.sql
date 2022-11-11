@@ -12,7 +12,7 @@ CREATE TABLE books (
     borrowed char(1),
     originalAmt int,
 	primary key (isbn) 
-	) 
+	);
 
 CREATE TABLE users (
 	uid integer,
@@ -24,7 +24,7 @@ CREATE TABLE users (
     date1 date,
     date2 date,
 	primary key (uid) 
-	) 
+	);
 
 INSERT INTO books values (11111, 'The History of Tom Jones', 'Henry Fielding', 1749, 'fiction', 3, 'T', 5),
 (11112,'Pride and Prejudice','Jane Austen',1813,'romance',2,'T',3),
@@ -36,7 +36,7 @@ INSERT INTO books values (11111, 'The History of Tom Jones', 'Henry Fielding', 1
 (11118,'Wuthering Heights','Emily Bronte',1847,'tragedy',2,'F',2),
 (11119,'The Brothers Karamazov','Dostoevsky',1879,'philosophy',2,'T',3),
 (11120,'War and Peace','Tolstoy',1869,'romance',3,'T',4),
-(11121,'Alice','Matt',1500,'romance',4,'F',4)
+(11121,'Alice','Matt',1500,'romance',4,'F',4);
 
 INSERT INTO users VALUES
 (112233, 'catdog', 'catcat123', '1', 'Pride and Prejudice', NULL, '2022-10-03', NULL),
