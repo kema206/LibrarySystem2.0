@@ -11,37 +11,65 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
-import org.junit.Test;
+import javax.lang.model.util.ElementScanner14;
+
+import org.hamcrest.core.IsNull;
 
 public class Library
 {
+    /**
+	 * Connection to database
+	 */
 	private Connection con;
-    public static void main(String[] args) throws SQLException
-	{	
+	
+
+	/**
+	 * Main method is only used for convenience.  Use JUnit test file to verify your answer.
+	 * 
+	 * @param args
+	 * 		none expected
+	 * @throws SQLException
+	 * 		if a database error occurs
+	 * @throws ParseException 
+	 * 		during date conversions
+	 */	
+	public static void main(String[] args) throws SQLException, ParseException
+	{
 		Library app = new Library();
-
+		
 		app.connect();
-		app.init();	
-
-		// List all users
-		System.out.println("\nExecuting list all users.");
+		app.init();
+						
+		// List all students
+		System.out.println("Executing list all students.");
 		System.out.println(app.listAllUsers());
+        app.close();
+    }
 
-		// List all users
-		System.out.println("\nExecuting list all books.");
-		System.out.println(app.listAllBooks());
-	}
+    /**
+	 * Makes a connection to the database and returns connection to caller.
+	 * 
+	 * @return
+	 * 		connection
+	 * @throws SQLException
+	 * 		if an error occurs
+	 */
 	public Connection connect() throws SQLException
 	{
+	    // TODO: Fill in your connection information
 		String url = "jdbc:mysql://localhost:3308/librarySystem";
 		String uid = "root";
 		String pw = "310rootpw";
 
 		System.out.println("Connecting to database.");
+		// Note: Must assign connection to instance variable as well as returning it back to the caller
 		con = DriverManager.getConnection(url, uid, pw);
 		return con;		                       
 	}
 
+    /**
+	 * Closes connection to database.
+	 */
 	public void close()
 	{
 		System.out.println("Closing database connection.");
@@ -56,13 +84,17 @@ public class Library
 		}
 	}
 
+    /**
+	 * Creates the database and initializes the data.
+	 */
 	public void init()
 	{
-	    String fileName = "C:\\Users\\ardik\\OneDrive\\Documents\\GitClones\\LibrarySystem2.0\\SQL\\libsysjar\\ddl\\libSys.sql";
+	    String fileName = "DDL/libSys.sql";
 	    Scanner scanner = null;
 	    
 	    try
 	    {
+	        // Create statement
 	        Statement stmt = con.createStatement();
 	        
 	        scanner = new Scanner(new File(fileName));
@@ -73,7 +105,7 @@ public class Library
 	            String command = scanner.next();
 	            if (command.trim().equals(""))
 	                continue;
-
+	            // System.out.println(command);        // Uncomment if want to see commands executed
 	            stmt.execute(command);
 	        }	        
 	    }
@@ -86,24 +118,31 @@ public class Library
 	    
 	    System.out.println("Data successfully loaded.");
 	}
+    /** 
+    * 
+    * @return
+    *       String containing all student information
+    */
+   public String listAllUsers() throws SQLException
+   {                
+       StringBuilder output = new StringBuilder();
+             
+       String SQL = "SELECT * FROM users";
+       PreparedStatement pstmt = con.prepareStatement(SQL);
+       ResultSet rs = pstmt.executeQuery();
+       output.append("uid, uname, pwd, lvl, book1, book2, date1, date2");
+       while(rs.next())
+       {
+           output.append("\n"+rs.getString("uid")+", "+rs.getString("uname")+", "+rs.getString("pwd")
+           +", "+rs.getString("lvl")+", "+rs.getString("book1")+", "+rs.getString("book2")+", "+rs.getString("date1")+", "+rs.getString("date2"));
+       }
+       rs.close();
+       pstmt.close();
+       return output.toString();
+   }
 
-	public String listAllUsers() throws SQLException
-    {                
-        StringBuilder output = new StringBuilder();
-        String SQL = "SELECT * FROM users";
-        PreparedStatement stmt = con.prepareStatement(SQL);       
-        ResultSet rst = stmt.executeQuery(); 
-        output.append("uid, uname, pwd, lvl, book1, book2, date1, date2");
-            while (rst.next())
-            {   
-                output.append("\n"+rst.getString("uid")+", "+rst.getString("uname")+", "+rst.getString("pwd")+", "+rst.getString("lvl")+", "+rst.getString("book1")
-                +", "+ rst.getString("book2")+", "+rst.getString("date1")+", "+rst.getString("date2"));
-            }
 
-        return output.toString();
-    }
-
-	public String listAllBooks() throws SQLException
+   public String listAllBooks() throws SQLException
     {                
         StringBuilder output = new StringBuilder();
         String SQL = "SELECT * FROM books";
@@ -119,7 +158,8 @@ public class Library
         return output.toString();
     }
 
-	public PreparedStatement addUser(int uid, String uname, String pwd, int lvl) throws SQLException
+
+    public PreparedStatement addUser(int uid, String uname, String pwd, int lvl) throws SQLException
     {                
         String SQL = "INSERT INTO users VALUES (?,?,?,?,?,?,?,?)";
         PreparedStatement stmt = con.prepareStatement(SQL);       
@@ -132,11 +172,11 @@ public class Library
 		stmt.setDate(7, null);
 		stmt.setDate(8, null);
 
-       	stmt.executeUpdate();
+       	int a = stmt.executeUpdate();
 		return stmt;
     }
 
-	public PreparedStatement addBook(int isbn, String bookName, String author, int yearPub, String genre, int qty, int originalAmt) throws SQLException
+    public PreparedStatement addBook(int isbn, String bookName, String author, int yearPub, String genre, int qty, int originalAmt) throws SQLException
     {                
         String SQL = "INSERT INTO books VALUES (?,?,?,?,?,?,?,?)";
         PreparedStatement stmt = con.prepareStatement(SQL); 
@@ -146,23 +186,22 @@ public class Library
 		stmt.setInt(4, yearPub);
 		stmt.setString(5, genre);
 		stmt.setInt(6, qty);
-		stmt.setString(7, "T");
-		stmt.setInt(8, originalAmt);  
-
+		stmt.setString(7, "F");
+		stmt.setInt(8, originalAmt);      
        	stmt.executeUpdate();	
 		return stmt;
     }
-	
-	public PreparedStatement removeUser(int uid) throws SQLException
+
+    public PreparedStatement removeUser(int uid) throws SQLException
 	{
-        PreparedStatement stmt = con.prepareStatement("DELETE FROM user WHERE uid = ?");
+        PreparedStatement stmt = con.prepareStatement("DELETE FROM users WHERE uid = ?");
         stmt.setInt(1, uid);
 
         stmt.executeUpdate();
     	return stmt;
 	}
 
-	public PreparedStatement removeBook(int isbn) throws SQLException
+    public PreparedStatement removeBook(int isbn) throws SQLException
 	{
         PreparedStatement stmt = con.prepareStatement("DELETE FROM books WHERE isbn = ?");
         stmt.setInt(1, isbn);
@@ -171,33 +210,21 @@ public class Library
     	return stmt;
 	}
 
-	public PreparedStatement updateBook(int isbn, int qty, String borrowed) throws SQLException
-    {                
-        String SQL = "UPDATE book SET qty = ? , borrowed = ? WHERE isbn = ?";
-        PreparedStatement stmt = con.prepareStatement(SQL); 
-		stmt.setInt(3, isbn);
-		stmt.setInt(1,qty);
-		stmt.setString(2, borrowed);
-
-       	stmt.executeUpdate();	
-		return stmt;
-    }
-
-	public PreparedStatement addBorrow(int uid, String book, java.util.Date date) throws SQLException
+    public PreparedStatement addBorrow(int uid, String book, java.util.Date d) throws Exception
     {  
-		ResultSet temp = getBook(uid);
+        ResultSet temp = getBook(uid);
 		String sql = "";
 		temp.next();
 		if(temp.getString(1) == null) {//if book1 is empty
 			sql = "UPDATE users "+
-					"SET book1 = ?,  date1 = ?"+
-					"WHERE uid = ?";
+					"SET book1=?, date1=? "+
+					"WHERE uid=?";
 		}else{
 			sql = "UPDATE users "+
-					"SET book2 = ?,  date2 = ?"+
-					"WHERE uid = ?";
+					"SET book2=?, date2=? "+
+					"WHERE uid=?";
 		}
-		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+		java.sql.Date sqlDate = new java.sql.Date(d.getTime());
         PreparedStatement stmt = con.prepareStatement(sql); 
 		stmt.setString(1, book);
 		stmt.setDate(2, sqlDate);
@@ -207,7 +234,30 @@ public class Library
 		return stmt;
     }
 
-	//helper method
+    public PreparedStatement addReturn(int uid, String book) throws SQLException
+    {  
+        ResultSet temp = getBook(uid);
+		String sql = "";
+		temp.next();
+		if(temp.getString(1).equals(book)) {//if book1 is empty
+			sql = "UPDATE users "+
+					"SET book1 = ?,  date1 = ? "+
+					"WHERE uid = ?";
+		}else{
+			sql = "UPDATE users "+
+					"SET book2 = ?,  date2 = ? "+
+					"WHERE uid = ?";
+		}
+        PreparedStatement stmt = con.prepareStatement(sql); 
+		stmt.setString(1, null);
+		stmt.setDate(2, null);
+		stmt.setInt(3, uid);
+
+       	stmt.executeUpdate();	
+		return stmt;
+    }
+
+    //helper method
 	public ResultSet getBook(int uid) throws SQLException{
 		String sql = "SELECT book1, book2 FROM users WHERE uid = ?";
 		PreparedStatement stmt = con.prepareStatement(sql);
@@ -215,4 +265,5 @@ public class Library
 
 		return stmt.executeQuery();
 	}
+
 }
