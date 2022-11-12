@@ -10,7 +10,9 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
+
 import javax.lang.model.util.ElementScanner14;
+
 import org.hamcrest.core.IsNull;
 
 public class Library
@@ -263,5 +265,23 @@ public class Library
 
 		return stmt.executeQuery();
 	}
+
+	public String listFilteredBooks(String genre) throws SQLException
+    {                
+        StringBuilder output = new StringBuilder();
+        String SQL = "SELECT * FROM books WHERE genre=?";
+        PreparedStatement stmt = con.prepareStatement(SQL);     
+		stmt.setString(1, genre);  
+        ResultSet rst = stmt.executeQuery(); 
+
+        output.append("isbn, bookName, author, yearPub, genre, qty, borrowed, originalAmt");
+            while (rst.next())
+            {   
+                output.append("\n"+rst.getString("isbn")+", "+rst.getString("bookName")+", "+rst.getString("author")
+                +", "+ rst.getString("yearPub")+", "+rst.getString("genre")+", "+rst.getString("qty")+", "+rst.getString("borrowed")+", "+rst.getString("originalAmt"));
+            }
+
+        return output.toString();
+    }
 
 }
