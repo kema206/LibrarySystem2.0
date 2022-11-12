@@ -20,7 +20,7 @@ Our Level-1 or L-1 DFD should describe the high level functionalities and all th
 
 In this case, we can clearly see the dependencies of data. We begin at entity that is a user logging in. During the log in phase, users are able to make an account or log in to the system. User data is stored and taken from the user table in the database. Failure to log-in will send users back to the log in page. Then we move on to the process of choosing what the user wants to do. This process differs based on the data in the log in phase. If they are admins they are able to add and remove books on top of the other listed features. Upon choosing what to do, the database of books is updated and the user database is updated. Then results are updated and displayed. <br/>
 
-Features changed or added include:<br/>
+<h2>Features changed or added:</h2><br/>
 1. Addition of a filter feature<br/>
 This feature was initially cut due to the constraints provided by a .csv system. Now, with the addition of SQL to our system, it's possible to use a relatively simple SELECT query to filter specific books. Filtering books would be a big deal in our system as it is integral for libraries to categorize and find books relatively fast. Even if it is just a simple filtering feature. <br/>
 
