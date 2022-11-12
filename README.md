@@ -6,14 +6,14 @@ The core functionalities of our system is still the same however, due to the pre
 
 <H2>Data Flow Diagrams</H2><br/>
 Our Data Flow Diagram (DFD) provides a preview of how data flows in our system. We provide two views, level-0 and level-1 DFD's. <br/>
-<h3>Level-0</h3><br/>
+<h3>Level-0</h3>
 Level-0 or L0 DFD's are meant to represent the most basic functionalities. It should represent all the high level functionalities. For this system, this is what our L0 DFD should look like: <br/>
 
 ![alt text](ReadMeRsc/dfd0.jpeg)<br/>
 
 The high level functionalities here are highlighted. The arrows represent where the data flows and the labels tell you what it does. The difference between admins and users can be seen here. Admins are able to add or remove books from the system. <br/>
 
-<h3>Level-1</h3><br/>
+<h3>Level-1</h3>
 Our Level-1 or L-1 DFD should describe the high level functionalities and all the subprocesses that play a part in our system. This is what our L-1 DFD looks like: <br/>
 
 ![alt text](ReadMeRsc/AccountsLogin.png) <br/>
