@@ -15,7 +15,9 @@ The high level functionalities here are highlighted. The arrows represent where 
 
 <h3>Level-1</h3><br/>
 Our Level-1 or L-1 DFD should describe the high level functionalities and all the subprocesses that play a part in our system. This is what our L-1 DFD looks like: <br/>
-![alt text](ReadMeRsc/AccountsLogin.png)<br/>
+
+![alt text](ReadMeRsc/AccountsLogin.png) <br/>
+
 In this case, we can clearly see the dependencies of data. We begin at entity that is a user logging in. During the log in phase, users are able to make an account or log in to the system. User data is stored and taken from the user table in the database. Failure to log-in will send users back to the log in page. Then we move on to the process of choosing what the user wants to do. This process differs based on the data in the log in phase. If they are admins they are able to add and remove books on top of the other listed features. Upon choosing what to do, the database of books is updated and the user database is updated. Then results are updated and displayed. <br/>
 
 Features changed or added include:<br/>
