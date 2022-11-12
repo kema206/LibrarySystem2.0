@@ -4,21 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Activities.SplashScreenActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="WelCome To Library Management System"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 
-    <FrameLayout
-        android:id="@+id/UserFragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/UserBottomNavigationView"
+    <Button
+        android:id="@+id/GetStartedBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/user_bottom_navigation_menu" />
+        android:text="Get Started" />
 
 
 </RelativeLayout>

@@ -4,21 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
+    tools:context=".Activities.AdminActivity">
 
     <FrameLayout
-        android:id="@+id/UserFragmentContainer"
+        android:id="@+id/AdminFragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@id/AdminBottomNavigationView"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/UserBottomNavigationView"
+        android:id="@+id/AdminBottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/user_bottom_navigation_menu" />
-
+        app:menu="@menu/admin_bottom_navigation_menu" />
 
 </RelativeLayout>
