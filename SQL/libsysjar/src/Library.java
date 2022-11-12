@@ -10,9 +10,7 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
-
 import javax.lang.model.util.ElementScanner14;
-
 import org.hamcrest.core.IsNull;
 
 public class Library
