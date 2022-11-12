@@ -15,7 +15,7 @@ This feature was changed due to the complexity of our previous system. The previ
 
 #SAMPLE OUTPUT
 <br/>
-3. New GUI
+3. Addition of a GUI <br/>
 Pairing the new SQL integration with the GUI also creates a better user experience as we're now adding buttons instead of relying on users typing (less errors). <br/>
 
 #sample output
