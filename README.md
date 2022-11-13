@@ -37,3 +37,6 @@ This feature was changed due to the complexity of our previous system. The previ
 Pairing the new SQL integration with the GUI also creates a better user experience as we're now adding buttons instead of relying on users typing (less errors). Furthermore, by using a website users do not have to download an application and can use the information easily. This solves the initial issue of users having to operate on a terminal and requiring expert knowledge to even open and operate the system. Users would need to use docker to access the website itself currently. This creates an issue of expert level set up. However, upon completion of set up the application no longer requires individuals to operate at an expert level.<br/>
 
 #sample output
+
+4. A new contact us feature<br/>
+To support users that might not understand how to operate the website, or if they have issues. We have placed a contact us button in the login page. <br/>
