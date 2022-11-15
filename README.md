@@ -41,3 +41,7 @@ Pairing the new SQL integration with the GUI also creates a better user experien
 
 4. A new contact us feature<br/>
 To support users that might not understand how to operate the website, or if they have issues. We have placed a contact us button in the login page. <br/>
+<br/>
+
+5. SQl integration<br/>
+6. In version 2 of our program we are no longer using csv for the database. The csv format was causing limitations, and the SQL format allows for better integration. <br/>
