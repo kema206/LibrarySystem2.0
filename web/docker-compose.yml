@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+    app:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        image: cosc310-java
+        depends_on:
+            - db
+        container_name: cosc310-java
+        volumes:
+            - ./WebContent:/usr/local/tomcat/webapps/shop/
+        networks:
+            shop-network:
+                aliases:
+                    - cosc310-java
+        ports:
+            - 80:8080
+    db:
+        image: mcr.microsoft.com/azure-sql-edge
+        container_name: mssql-cosc310
+        restart: always
+        environment:
+            ACCEPT_EULA: 'Y'
+            SA_PASSWORD: 'YourStrong@Passw0rd'
+        ports:
+            - '1433:1433'
+        expose:
+            - '1433'
+        volumes:
+            - cosc310-db:/var/lib/mssql
+        networks:
+            shop-network:
+                aliases:
+                    - cosc310-db
+volumes: 
+    cosc310-db:
+networks:
+    shop-network:
