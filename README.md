@@ -25,23 +25,37 @@ In this case, we can clearly see the dependencies of data. We begin at entity th
 1. Addition of a filter feature<br/>
 This feature was initially cut due to the constraints provided by a .csv system. Now, with the addition of SQL to our system, it's possible to use a relatively simple SELECT query to filter specific books. Filtering books would be a big deal in our system as it is integral for libraries to categorize and find books relatively fast. Even if it is just a simple filtering feature. <br/>
 
-#SAMPLE OUTPUT
+![alt text](ReadMeRsc/filter1.jpeg)<br/>
+
+![alt text](ReadMeRsc/filter2.jpeg)<br/>
+
+![alt text](ReadMeRsc/filter3.jpeg)<br/>
 <br/>
 
 2. Reprogramming older features (login, new account, add book, remove book) to suit our new SQL integration<br/>
 This feature was changed due to the complexity of our previous system. The previous system heavily relied on the .csv readers and writers. This made our code extremely inefficient. The amount of reads and writes we had to do also convoluted the code and was relatively messy. </br>
 
-#SAMPLE OUTPUT
+![alt text](ReadMeRsc/borrow.jpeg)<br/>
+
+![alt text](ReadMeRsc/borrow2.jpeg)<br/>
 <br/>
 
 3. Addition of a GUI, from terminal to website <br/>
 Pairing the new SQL integration with the GUI also creates a better user experience as we're now adding buttons instead of relying on users typing (less errors). Furthermore, by using a website users do not have to download an application and can use the information easily. This solves the initial issue of users having to operate on a terminal and requiring expert knowledge to even open and operate the system. Users would need to use docker to access the website itself currently. This creates an issue of expert level set up. However, upon completion of set up the application no longer requires individuals to operate at an expert level.<br/>
 
-#sample output
+![alt text](ReadMeRsc/book.jpeg)<br/>
+
+![alt text](ReadMeRsc/book2.jpeg)<br/>
 
 4. A new contact us feature<br/>
 To support users that might not understand how to operate the website, or if they have issues. We have placed a contact us button in the login page. <br/>
+
+![alt text](ReadMeRsc/contactUs.jpeg)<br/>
+
+![alt text](ReadMeRsc/email.jpeg)<br/>
 <br/>
 
 5. SQl integration<br/>
-6. In version 2 of our program we are no longer using csv for the database. The csv format was causing limitations, and the SQL format allows for better integration. <br/>
+6. In version 2 of our program we are no longer using csv for the database. The csv format was causing limitations, and the SQL format allows for better integration.<br/> 
+![alt text](ReadMeRsc/ddl.png)<br/>
+<br/>
