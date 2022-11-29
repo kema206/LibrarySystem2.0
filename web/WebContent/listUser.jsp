@@ -1,11 +1,10 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.text.NumberFormat" %>
-<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>List of Books</title>
+<title>List of Users</title>
 </head>
 <body style="background-color:#FFFDD0">
 
@@ -52,17 +51,15 @@ Statement stmt = con.createStatement();
 ResultSet rst = stmt.executeQuery(sql);
 %>
 		<table border="1" style="border-collapse:collapse;margin-left:auto;margin-right:auto;font-family: Futura;">
-			<th>
 				<tr>
-					<th>USERID</th>
-					<th>USERNAME</th>
-					<th>LVL</th>
+					<th>UserId</th>
+					<th>Username</th>
+					<th>Lvl</th>
 					<th>Book1</th>
 					<th>Book2</th>
 					<th>Date1</th>
 					<th>Date2</th>
 				</tr>
-			</th>
 			<%
 // Print out the order summary information
 while(rst.next()){

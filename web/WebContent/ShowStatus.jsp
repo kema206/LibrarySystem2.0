@@ -45,6 +45,32 @@ String bookName = request.getParameter("bn");
 if(bookName==null){
     bookName="";
 }
+
+if(bookName.equals("1")){
+    bookName = "The History of Tom Jones";
+}else if(bookName.equals("2")){
+    bookName = "Pride and Prejudice";
+}else if(bookName.equals("3")){
+    bookName = "The Red and the Black";
+}else if(bookName.equals("4")){
+    bookName = "Le Pere Goriot";
+}else if(bookName.equals("5")){
+    bookName = "David Copperfield";
+}else if(bookName.equals("6")){
+    bookName = "Madame Bovary";
+}else if(bookName.equals("7")){
+    bookName = "Moby-Dick";
+}else if(bookName.equals("8")){
+    bookName = "Wuthering Heights";
+}else if(bookName.equals("7")){
+    bookName = "The Brothers Karamazov";
+}else if(bookName.equals("8")){
+    bookName = "War and Peace";
+}else{
+	bookName = "Alice";
+}
+
+
 // Make connection
 String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
 String uid = "SA";

@@ -30,7 +30,6 @@ String pw = "YourStrong@Passw0rd";
 Connection con = DriverManager.getConnection(url, uid, pw);
 %>
 
-<h2>Enter your uname:</h2>
 <form method="get" action="returnBook2.jsp">
     uname:<br> <input type="text" name="uname">
     <input type="submit">

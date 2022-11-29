@@ -55,7 +55,7 @@ if(!rst.next()){
 		<h2>The username you entered is invalid</h2>
 		<h3>Go back to login page</h3>
 		<a href="login.jsp">Back</a>
-		<h3>Go to create aaccount page</h3>
+		<h3>Go to create account page</h3>
 		<a href="createAccout.jsp">Create Account</a>
 	<%
 } else{

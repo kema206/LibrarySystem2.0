@@ -76,6 +76,12 @@ else
 
 con.close();
 %>
+<style>
+    .text-c {
+		text-align: center;
+	}
+</style>
+<div class="text-c">
 <h2>your late fee is : $ <%=fee%></h2>
 <form method="get" action="returnBook4.jsp">
 <input type="hidden" name="bname" value=<%=bname%>> 
@@ -83,6 +89,7 @@ con.close();
 <input type="hidden" name="uname" value=<%=uname%>> 
 <input type="submit" value="Continue">
 </form>
+</div>
 
 </body>
 </html>

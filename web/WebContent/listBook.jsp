@@ -1,14 +1,11 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.text.NumberFormat" %>
-<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
 <!DOCTYPE html>
-<html>
 <head>
-<title>List of Books</title>
-</head>
+<title>List Book</title>
+</head> 
 <body style="background-color:#FFFDD0">
-
 <div class="text-c">
 <h1 style="text-align:center;font-family: Futura;">Book List</h1>
 <h3>Genre Filter</h3>
@@ -46,7 +43,7 @@
 
 String genre = request.getParameter("genre");
 if(genre == null) {
-	genre = "";
+	genre = "all";
 }
 
 //Note: Forces loading of SQL Server driver
@@ -59,17 +56,12 @@ catch (java.lang.ClassNotFoundException e)
 	out.println("ClassNotFoundException: " +e);
 }
 
-// Useful code for formatting currency values:
-// NumberFormat currFormat = NumberFormat.getCurrencyInstance();
-// out.println(currFormat.format(5.0);  // Prints $5.00
-
 // Make connection
 String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
 String uid = "SA";
 String pw = "YourStrong@Passw0rd";
 
 Connection con = DriverManager.getConnection(url, uid, pw);
-// Print out the order summary information
 
 if(!genre.equals("all")){
 	String sql = "SELECT * FROM books WHERE genre=? AND qty>0";
@@ -94,10 +86,11 @@ if(!genre.equals("all")){
 
 
 		while(rst.next()) {
+			String bookUrl = "Book.jsp?isbn=" + rst.getString("isbn");
 			%>
 				<tr>
-					<td style="text-align:center;font-family: Futura;"><%=rst.getInt("isbn")%></td>
-					<td style="text-align:center;font-family: Futura;"><%=rst.getString("bookName")%></td>
+					<td style="text-align:center;font-family: Futura;"><%=rst.getString("isbn")%></td>
+					<td style="text-align:center;font-family: Futura;"><a href=<%=bookUrl%>><%=rst.getString("bookName")%></td>
 					<td style="text-align:center;font-family: Futura;"><%=rst.getString("author")%></td>
 					<td style="text-align:center;font-family: Futura;"><%=rst.getInt("yearPub")%></td>
 					<td style="text-align:center;font-family: Futura;"><%=rst.getString("genre")%></td>
@@ -127,10 +120,11 @@ if(!genre.equals("all")){
 // For each product create a link of the form
 // addcart.jsp?id=productId&name=productName&price=productPrice
 while(rst.next()) {
+	String bookUrl = "Book.jsp?isbn=" + rst.getString("isbn");
 	%>
 				<tr>
-					<td style="text-align:center;font-family: Futura;"><%=rst.getInt("isbn")%></td>
-					<td style="text-align:center;font-family: Futura;"><%=rst.getString("bookName")%></td>
+					<td style="text-align:center;font-family: Futura;"><%=rst.getString("isbn")%></td>
+					<td style="text-align:center;font-family: Futura;"><a href=<%=bookUrl%>><%=rst.getString("bookName")%></td>
 					<td style="text-align:center;font-family: Futura;"><%=rst.getString("author")%></td>
 					<td style="text-align:center;font-family: Futura;"><%=rst.getInt("yearPub")%></td>
 					<td style="text-align:center;font-family: Futura;"><%=rst.getString("genre")%></td>
@@ -141,16 +135,30 @@ while(rst.next()) {
 	}
 }
 // Close connection
-con.close();
+
 %>
 <div class="form_pos text-c">
-<h3>Write the complete title of the book you want to borrow (including capital letters on the title):</h3>
 <form method="get" action="borrowBook.jsp">
-<input type="text" name="bookName" size="30">
-<h3>Write your username here:</h3>
-<input type="text" name="uname" size="30">
+Pick a book you want to borrow<select name="bookName" id="bookName">
+<%
+String sql = "SELECT bookName FROM books";
+Statement stmt = con.createStatement();
+ResultSet rst = stmt.executeQuery(sql);
+
+while(rst.next()){
+%>
+<option value="<%=rst.getString("bookName")%>"><%=rst.getString("bookName")%></option>
+<%
+}
+%>
+</select><br>
+Username: <input type="text" name="uname" size="20"><br>
 <input type="submit" value="Submit"><input type="reset" value="Reset">
 </form>
+<%
+
+con.close();
+%>
 </div>
 </body>
 </html>

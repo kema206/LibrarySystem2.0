@@ -52,7 +52,7 @@ catch (java.lang.ClassNotFoundException e)
 
     String sql2 = "INSERT INTO books VALUES (?,?,?,?,?,?,?)";
     PreparedStatement pstmt = con.prepareStatement(sql2);
-    pstmt.setInt(1,Integer.parseInt(isbn));
+    pstmt.setInt(1,isbn);
     pstmt.setString(2,bookName);
     pstmt.setString(3,author);
     pstmt.setInt(4,Integer.parseInt(yearpub));

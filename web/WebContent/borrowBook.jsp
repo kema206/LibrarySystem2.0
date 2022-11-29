@@ -6,11 +6,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<title>Success</title>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Success</title>
+    
 </head>
-<body style="background-color:#FFFDD0;">
-
+<body style="background-color:#FFFDD0">
 <div class="text-c">
 <style>
     .text-c {
@@ -26,6 +27,30 @@ if(bookName == null) {
 String username = request.getParameter("uname");
 if(username == null) {
 	username = "";
+}
+String temp = "";
+if(bookName.equals("The History of Tom Jones")){
+    temp = "1";
+}else if(bookName.equals("Pride and Prejudice")){
+    temp = "2";
+}else if(bookName.equals("The Red and the Black")){
+    temp = "3";
+}else if(bookName.equals("Le Pere Goriot")){
+    temp = "4";
+}else if(bookName.equals("David Copperfield")){
+    temp = "5";
+}else if(bookName.equals("Madame Bovary")){
+    temp = "6";
+}else if(bookName.equals("Moby-Dick")){
+    temp = "7";
+}else if(bookName.equals("Wuthering Heights")){
+    temp = "8";
+}else if(bookName.equals("The Brothers Karamazov")){
+    temp = "9";
+}else if(bookName.equals("War and Peace")){
+    temp = "10";
+}else{
+    temp = "11";
 }
 
 
@@ -66,7 +91,12 @@ while(rst.next()){
             pstmt.executeUpdate();
             %>
                 <h2>You successfully borrowed a book</h2>
-			    <%
+                <form method="get" action="ShowStatus.jsp">
+                    <input type="submit" value="Show Status">
+                    <input type="hidden" name="un" value=<%=username%>> 
+                    <input type="hidden" name="bn" value=<%=temp%>> 
+                </form>
+			<%
         } else if(rst.getString("book2")==null){
             Date dateDika = rst.getDate("date1");
             long diff = date.getTime() - dateDika.getTime();
@@ -79,17 +109,26 @@ while(rst.next()){
                 pstmt.executeUpdate();
                 %>
                 <h2>You successfully borrowed a book</h2>
+                <form method="get" action="ShowStatus.jsp">
+                    <input type="submit" value="Show Status">
+                    <input type="hidden" name="un" value=<%=username%>> 
+                    <input type="hidden" name="bn" value=<%=temp%>> 
+                </form>
 			    <%
             }else{
                 %>
                 <h2>You cannot borrow a book if you are late to return your previous book</h2>
+                <h2> <a href="login.jsp">Back to Login Page</a></span></h2>
 			    <%
             }
             
         } else{
             %>
+            
                 <h2>You already borrowed 2 books, you cannot borrow more</h2>
+                <h2> <a href="login.jsp">Back to Login Page</a></span></h2>
 			    <%
+            
         }
     }
 }
@@ -98,13 +137,6 @@ while(rst.next()){
 con.close();
 
 %>
-
-<form method="get" action="ShowStatus.jsp">
-    <input type="submit" value="Show Status">
-    <input type="hidden" name="un" value=<%=username%>> 
-    <input type="hidden" name="bn" value=<%=bookName%>> 
-</form>
-
 </div>
 </body>
 </html>
