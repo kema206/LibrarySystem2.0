@@ -47,27 +47,27 @@ if(bookName==null){
 }
 
 if(bookName.equals("1")){
-    bookName = "The History of Tom Jones";
+    bookName = "Animal Stories";
 }else if(bookName.equals("2")){
-    bookName = "Pride and Prejudice";
+    bookName = "Cosmoknights";
 }else if(bookName.equals("3")){
-    bookName = "The Red and the Black";
+    bookName = "The Delicacy";
 }else if(bookName.equals("4")){
-    bookName = "Le Pere Goriot";
+    bookName = "Essex County";
 }else if(bookName.equals("5")){
-    bookName = "David Copperfield";
+    bookName = "Dosa Kitchen";
 }else if(bookName.equals("6")){
-    bookName = "Madame Bovary";
+    bookName = "Dozens of Doughnuts";
 }else if(bookName.equals("7")){
-    bookName = "Moby-Dick";
+    bookName = "American Cool";
 }else if(bookName.equals("8")){
-    bookName = "Wuthering Heights";
+    bookName = "Rick";
 }else if(bookName.equals("7")){
-    bookName = "The Brothers Karamazov";
+    bookName = "After Finitude";
 }else if(bookName.equals("8")){
-    bookName = "War and Peace";
+    bookName = "The Little Prince";
 }else{
-	bookName = "Alice";
+	bookName = "Save the White Whale!";
 }
 
 

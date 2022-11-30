@@ -29,25 +29,25 @@ if(username == null) {
 	username = "";
 }
 String temp = "";
-if(bookName.equals("The History of Tom Jones")){
+if(bookName.equals("Animal Stories")){
     temp = "1";
-}else if(bookName.equals("Pride and Prejudice")){
+}else if(bookName.equals("Cosmoknights")){
     temp = "2";
-}else if(bookName.equals("The Red and the Black")){
+}else if(bookName.equals("The Delicacy")){
     temp = "3";
-}else if(bookName.equals("Le Pere Goriot")){
+}else if(bookName.equals("Essex County")){
     temp = "4";
-}else if(bookName.equals("David Copperfield")){
+}else if(bookName.equals("Dosa Kitchen")){
     temp = "5";
-}else if(bookName.equals("Madame Bovary")){
+}else if(bookName.equals("Dozens of Doughnuts")){
     temp = "6";
-}else if(bookName.equals("Moby-Dick")){
+}else if(bookName.equals("American Cool")){
     temp = "7";
-}else if(bookName.equals("Wuthering Heights")){
+}else if(bookName.equals("Rick")){
     temp = "8";
-}else if(bookName.equals("The Brothers Karamazov")){
+}else if(bookName.equals("After Finitude")){
     temp = "9";
-}else if(bookName.equals("War and Peace")){
+}else if(bookName.equals("'Save the White Whale!'")){
     temp = "10";
 }else{
     temp = "11";
