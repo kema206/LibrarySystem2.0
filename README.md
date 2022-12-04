@@ -57,7 +57,16 @@ To support users that might not understand how to operate the website, or if the
 ![alt text](ReadMeRsc/email.jpeg)<br/>
 <br/>
 
-5. SQl integration<br/>
+5. SQL integration<br/>
 6. In version 2 of our program we are no longer using csv for the database. The csv format was causing limitations, and the SQL format allows for better integration.<br/> 
 ![alt text](ReadMeRsc/ddl.png)<br/>
 <br/>
+
+7. Twitter API implementation<br/>
+![alt text](ReadMeRsc/login.jpeg)<br/>
+
+![alt text](ReadMeRsc/createAccount.jpeg)<br/>
+
+8. Google Books API (Book Preview) and Google Viualization API (Review Table) implementation<br/>
+![alt text](ReadMeRsc/BookPreview.jpeg)<br/>
+
