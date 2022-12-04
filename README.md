@@ -38,6 +38,8 @@ This feature was changed due to the complexity of our previous system. The previ
 ![alt text](ReadMeRsc/borrow.jpeg)<br/>
 
 ![alt text](ReadMeRsc/borrow2.jpeg)<br/>
+
+![alt text](ReadMeRsc/borrow3.jpeg)<br/>
 <br/>
 
 3. Addition of a GUI, from terminal to website <br/>
