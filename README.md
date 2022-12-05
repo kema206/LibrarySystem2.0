@@ -38,6 +38,8 @@ This feature was changed due to the complexity of our previous system. The previ
 ![alt text](ReadMeRsc/borrow.jpeg)<br/>
 
 ![alt text](ReadMeRsc/borrow2.jpeg)<br/>
+
+![alt text](ReadMeRsc/borrow3.jpeg)<br/>
 <br/>
 
 3. Addition of a GUI, from terminal to website <br/>
@@ -55,7 +57,19 @@ To support users that might not understand how to operate the website, or if the
 ![alt text](ReadMeRsc/email.jpeg)<br/>
 <br/>
 
-5. SQl integration<br/>
-6. In version 2 of our program we are no longer using csv for the database. The csv format was causing limitations, and the SQL format allows for better integration.<br/> 
+5. SQL integration<br/>
+In version 2 of our program we are no longer using csv for the database. The csv format was causing limitations, and the SQL format allows for better integration.<br/> 
 ![alt text](ReadMeRsc/ddl.png)<br/>
 <br/>
+
+6. Twitter API implementation<br/>
+Implementation of Twitter API is used in login page and when a user successfully created account. A tweet is embended in the pages previously mentioned.
+![alt text](ReadMeRsc/login.jpeg)<br/>
+
+![alt text](ReadMeRsc/createAccount.jpeg)<br/>
+
+7. Google Books API (Book Preview) and Google Viualization API (Review Table) implementation<br/>
+Google Books API is used when users click the title of the book it shows a preview of the first pages for the users to determine which book to borrow.<br>
+Google Visualization API is implemented in creating a table which shows rating of each book according to multiple trusted sources<br>
+![alt text](ReadMeRsc/BookPreview.jpeg)<br/>
+
